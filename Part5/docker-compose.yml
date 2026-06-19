@@ -5,6 +5,10 @@ services:
       build: app/.
       ports: 
         - 3006:3006
+      environment:
+        DB_NAME: allergen_info
+        DB_USER: pythonapp  
+        DB_PASS: secretPass123!         
       depends_on:
         - dbhost
         - redis-server
@@ -17,14 +21,17 @@ services:
       depends_on:
         - redis-server
       environment:
-        TO_ADDRESS: <your Quantic email>
-        FROM_ADDRESS: <new Gmail email>
-        FROM_PASSWORD: <Gmail app password>
+        TO_ADDRESS: matej.pavlicek@woodgroup.com
+        FROM_ADDRESS: matulilik1@googlemail.com
+        FROM_PASSWORD: gserucctldbvoqjq
     db-loader:
       build: db-loader/.
       volumes: 
-        - <Enter Here>allergy-lab-watchfolder:/mnt/watchfolder/
+        - C:/Users/mpser/Downloads/Quantic/Learning/Microservices architecture/Docker/allergy-lab-watchfolder:/mnt/watchfolder/
       environment:
         FOLDER_PATH: /mnt/watchfolder/
+        DB_NAME: allergen_info
+        DB_USER: pythonapp  
+        DB_PASS: secretPass123!  
       depends_on:
         - dbhost

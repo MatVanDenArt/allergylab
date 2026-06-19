@@ -1,0 +1,1 @@
+docker build -t ${{ secrets.DOCKER_USERNAME }}/al-app:latest ./app
